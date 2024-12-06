@@ -1,0 +1,3 @@
+1234567890123456-bankAccountName:aaa,bankAccountBalance:10000.00,bankAccountPsw:123456,state:active
+6543212345678900-bankAccountName:bbb,bankAccountBalance:500.00,bankAccountPsw:123456,state:active
+5996780661961200-bankAccountName:abc,bankAccountBalance:0.00,bankAccountPsw:098765,state:active
