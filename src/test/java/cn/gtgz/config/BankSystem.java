@@ -43,7 +43,7 @@ public class BankSystem {
     System.out.println(
         "--------------------------      Login to the banking account successful     ----------------------------------\n");
     System.out.println(
-        "Please select the module you want to go to :\n1. View account details\n2. Account deposit\n3. Account withdrawals\n4.Transfer to other accounts\n5. Exist");
+        "Please select the module you want to go to :\n1. View account details\n2. Account deposit\n3. Account withdrawals\n4. Transfer to other accounts\n5. Exist");
     String operate = scanner.nextLine();
     switch (operate) {
       case "1":
