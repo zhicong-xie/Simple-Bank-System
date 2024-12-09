@@ -124,29 +124,6 @@ public class BankAccountProfile extends Base {
     }
   }
 
-  public void viewAccountDetails(String accountNum, String loggedAccountNum) {
-    if (isAccountNumExist(accountNum)) {
-      if (isLoginVerification.contains(accountNum + "true")) {
-        LinkedHashMap<String, LinkedHashMap<String, String>> data = bankAccountDataInfo;
-        for (String key : data.get(accountNum).keySet()) {
-          if (!key.equals("bankAccountPsw")) {
-            System.out.println(String.format(key + " : " + data.get(accountNum).get(key)) + "\n");
-          }
-        }
-
-        for (String key : data.get(loggedAccountNum).keySet()) {
-          if (!key.equals("bankAccountPsw")) {
-            System.out.println(String.format(key + " : " + data.get(accountNum).get(key)) + "\n");
-          }
-        }
-      } else {
-        System.out.println("Please login your profile first");
-      }
-    } else {
-      System.out.println("Your account does not exist");
-    }
-  }
-
   public String getAccountBalance(String accountNum) {
     if (isAccountNumExist(accountNum)) {
       if (isLoginVerification.contains(accountNum + "true")) {
