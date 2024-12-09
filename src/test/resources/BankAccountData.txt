@@ -1,3 +1,5 @@
-1234567890123456-bankAccountName:aaa,bankAccountBalance:10000.00,bankAccountPsw:123456,state:active
+1234567890123456-bankAccountName:aaa,bankAccountBalance:10100.00,bankAccountPsw:123456,state:active
 6543212345678900-bankAccountName:bbb,bankAccountBalance:500.00,bankAccountPsw:123456,state:active
-5996780661961200-bankAccountName:abc,bankAccountBalance:0.00,bankAccountPsw:098765,state:active
+1449388160829521-bankAccountName:qqq,bankAccountBalance:50.00,bankAccountPsw:111111,state:active
+3156597272636903-bankAccountName:qaz,bankAccountBalance:49.00,bankAccountPsw:111111,state:non-active
+5700699031917436-bankAccountName:xxx,bankAccountBalance:890.00,bankAccountPsw:111111,state:active
