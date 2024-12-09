@@ -232,4 +232,12 @@ public class BankAccountProfile extends Base {
       System.out.println("Receive account does not exist");
     }
   }
+
+  public boolean getLoginVerification(){
+    return isLoginVerification.contains("true");
+  }
+
+  public String getLoggedAccountNum(){
+    return loggedAccountNum;
+  }
 }
