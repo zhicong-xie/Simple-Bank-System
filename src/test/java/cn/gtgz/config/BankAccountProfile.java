@@ -233,11 +233,11 @@ public class BankAccountProfile extends Base {
     }
   }
 
-  public boolean getLoginVerification(){
+  public boolean getLoginVerification() {
     return isLoginVerification.contains("true");
   }
 
-  public String getLoggedAccountNum(){
+  public String getLoggedAccountNum() {
     return loggedAccountNum;
   }
 }

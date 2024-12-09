@@ -2,9 +2,13 @@ package cn.gtgz.config;
 
 import java.util.Scanner;
 
-public class BankSystem extends BankAccountProfile {
+public class BankSystem {
 
-  private BankAccountProfile bankAccountProfile = new BankAccountProfile();
+  private BankAccountProfile bankAccountProfile;
+
+  public BankSystem() {
+    bankAccountProfile = new BankAccountProfile();
+  }
 
   public void bankSystemMenu() {
     Scanner scanner = new Scanner(System.in);
@@ -43,27 +47,28 @@ public class BankSystem extends BankAccountProfile {
     String operate = scanner.nextLine();
     switch (operate) {
       case "1":
-        bankAccountProfile.viewAccountDetails(getLoggedAccountNum());
+        bankAccountProfile.viewAccountDetails(bankAccountProfile.getLoggedAccountNum());
         break;
       case "2":
-        bankAccountProfile.viewAccountDetails(getLoggedAccountNum());
+        bankAccountProfile.viewAccountDetails(bankAccountProfile.getLoggedAccountNum());
         System.out.println("Please enter the amount you want to deposit");
         String amount = scanner.nextLine();
         bankAccountProfile.accountDeposit(amount);
-        bankAccountProfile.viewAccountDetails(getLoggedAccountNum());
+        bankAccountProfile.viewAccountDetails(bankAccountProfile.getLoggedAccountNum());
         System.out.println(
             String.format(
-                "%s account successfully transferred %s amount", getLoggedAccountNum(), amount));
+                "%s account successfully transferred %s amount",
+                bankAccountProfile.getLoggedAccountNum(), amount));
         break;
       case "3":
-        bankAccountProfile.viewAccountDetails(getLoggedAccountNum());
+        bankAccountProfile.viewAccountDetails(bankAccountProfile.getLoggedAccountNum());
         System.out.println("Please enter the amount you want to withdrawals");
         amount = scanner.nextLine();
         bankAccountProfile.accountWithdrawals(amount);
-        bankAccountProfile.viewAccountDetails(getLoggedAccountNum());
+        bankAccountProfile.viewAccountDetails(bankAccountProfile.getLoggedAccountNum());
         break;
       case "4":
-        bankAccountProfile.viewAccountDetails(getLoggedAccountNum());
+        bankAccountProfile.viewAccountDetails(bankAccountProfile.getLoggedAccountNum());
         System.out.println("Please enter the amount you want to transfer amount");
         amount = scanner.nextLine();
         System.out.println("Please enter the receive number");
