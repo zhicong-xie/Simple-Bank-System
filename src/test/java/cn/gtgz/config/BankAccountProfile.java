@@ -12,6 +12,7 @@ public class BankAccountProfile extends Base {
   protected String isLoginVerification = "false";
   private String defaultBalance = "0.00";
   protected String loggedAccountNum = "";
+  protected String accountNum;
 
   public boolean isAccountNumExist(String accountNum) {
     return bankAccountDataInfo.containsKey(accountNum);
@@ -55,7 +56,7 @@ public class BankAccountProfile extends Base {
       String accountNum) {
     LinkedHashMap<String, LinkedHashMap<String, String>> allData = bankAccountDataInfo;
     LinkedHashMap<String, String> getAccountInfo = allData.get(accountNum);
-    getAccountInfo.put("state", "non-active");
+    getAccountInfo.put("state", "non");
     allData.put(accountNum, getAccountInfo);
     return allData;
   }
@@ -71,7 +72,7 @@ public class BankAccountProfile extends Base {
   public void loginFunction() {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Please input your bank account number");
-    String accountNum = scanner.nextLine();
+    accountNum = scanner.nextLine();
     if (isAccountNumExist(accountNum)) {
       if (isAccountActive(accountNum)) {
         System.out.println("Please input your bank account password");
@@ -81,7 +82,7 @@ public class BankAccountProfile extends Base {
           String psw = scanner.nextLine();
           if (psw.equals(expectPsw)) {
             System.out.println(
-                "Password correct, successfully logged in. will automatically log out of the last logged in account.");
+                "Password correct, successfully logged in. will automatically log out of the last logged in account.\n");
             isLoginVerification = accountNum + "true";
             loggedAccountNum = accountNum;
             break;
@@ -93,17 +94,17 @@ public class BankAccountProfile extends Base {
             } else {
 
               writeMapDataToTxt(updateAccountAndUpdateToMap(accountNum), false);
-              System.out.println("Your account has been locked, please contact xxx-xxx-xxxxx");
+              System.out.println("Your account has been locked, please contact xxx-xxx-xxxxx\n");
               tryOpportunity--;
             }
           }
         } while (tryOpportunity >= 0);
       } else {
-        System.out.println("Your account has been locked, please contact xxx-xxx-xxxxx");
+        System.out.println("Your account has been locked, please contact xxx-xxx-xxxxx\n");
       }
       //
     } else {
-      System.out.println("Your account does not exist");
+      System.out.println("Your account does not exist\n");
     }
   }
 
@@ -117,10 +118,10 @@ public class BankAccountProfile extends Base {
           }
         }
       } else {
-        System.out.println("Please login your profile first");
+        System.out.println("Please login your profile first\n");
       }
     } else {
-      System.out.println("Your account does not exist");
+      System.out.println("Your account does not exist\n");
     }
   }
 
@@ -134,10 +135,10 @@ public class BankAccountProfile extends Base {
           }
         }
       } else {
-        System.out.println("Please login your profile first");
+        System.out.println("Please login your profile first\n");
       }
     } else {
-      System.out.println("Your account does not exist");
+      System.out.println("Your account does not exist\n");
     }
     return "";
   }
@@ -152,7 +153,7 @@ public class BankAccountProfile extends Base {
                 .add(stringToBigDecimal(transactionAmount)));
       }
     } else {
-      System.out.println("Please login your account first");
+      System.out.println("Please login your account first\n");
     }
   }
 
@@ -167,12 +168,12 @@ public class BankAccountProfile extends Base {
               loggedAccountNum,
               stringToBigDecimal(getAccountBalance(loggedAccountNum))
                   .subtract(stringToBigDecimal(transactionAmount)));
-          System.out.println("Withdrawal successful");
+          System.out.println("Withdrawal successful\n");
         } else {
-          System.out.println("Withdrawal fail, The transfer amount exceeds the balance");
+          System.out.println("Withdrawal fail, The transfer amount exceeds the balance\n");
         }
       } else {
-        System.out.println("Please login your account first");
+        System.out.println("Please login your account first\n");
       }
     }
   }
@@ -201,20 +202,27 @@ public class BankAccountProfile extends Base {
         allData = bankAccountDataInfo;
         System.out.println(
             "Send account transfer was successful, the balance is : "
-                + allData.get(loggedAccountNum).get("bankAccountBalance"));
+                + allData.get(loggedAccountNum).get("bankAccountBalance")
+                + "\n");
       } else {
-        System.out.println("The transfer amount exceeds the balance");
+        System.out.println("The transfer amount exceeds the balance\n");
       }
     } else {
-      System.out.println("Receive account does not exist");
+      System.out.println("Receive account does not exist\n");
     }
   }
 
   public boolean getLoginVerification() {
-    return isLoginVerification.contains("true");
+    return isLoginVerification.contains(loggedAccountNum + "true")
+        && isLoginVerification.contains(accountNum);
   }
 
   public String getLoggedAccountNum() {
     return loggedAccountNum;
+  }
+
+  public void logoffProfile() {
+    isLoginVerification = "false";
+    loggedAccountNum = "";
   }
 }
